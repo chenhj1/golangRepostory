@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// ---------------------------------------------------------------------------------------------------------------------
 // sync包中的Wait和Signal使用
 //
 // Wait: 使当前goroutine阻塞，直到被其他的goroutine通知（即调用Singal方法）
@@ -17,6 +18,7 @@ import (
 // 不同点：java的wait和notify是 object 的方法；golang的wait和signal需要定义一个 sync.Cond 变量，传入一个 Mutex 锁来使用。即：java是object.wait(); golang是cond.Wait()
 //
 // note: cond作为函数参数时，必须是指针，否则失效！
+// ---------------------------------------------------------------------------------------------------------------------
 
 func ft(i int, c *sync.Cond) {
 	fmt.Println("Not lock", i)
