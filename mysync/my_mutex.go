@@ -13,6 +13,8 @@ import (
 //
 // 在一个 goroutine 获得 Mutex 后，其他 goroutine 只能等到这个 goroutine 释放该 Mutex
 // 已经锁定的 Mutex 并不与特定的 goroutine 相关联。这样可以利用一个 goroutine 对其加锁，再利用其他 goroutine 对其解锁
+//
+// note: mutex作为函数参数时，必须是指针类型，否则失效！
 
 // 加锁之后，休眠几秒，再解锁。
 // note：整个休眠期间，其他 goroutine 是拿不到这个锁的，只能等待本 goroutine 解锁

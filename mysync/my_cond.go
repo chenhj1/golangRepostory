@@ -10,15 +10,17 @@ import (
 //
 // Wait: 使当前goroutine阻塞，直到被其他的goroutine通知（即调用Singal方法）
 // Signal: 唤醒一个wait()中的协程
-// SignalAll：唤醒全部Wait()的协程
+// Broadcast：唤醒全部Wait()的协程
 //
 // 与java的wait和notify如出一辙:
-// 相同点：java的wait和notify必须在synchronized代码块中使用；golang的wait和signal必须在mutex中使用。二者都需要加锁。（golang的signal不需要在锁中调用也可以，不强制）
-// 不同点：java的wait和notify是对象的方法；golang的wait和signal需要定义一个 sync.Cond 变量，传入一个 Mutex 锁来使用。即：java是object.wait(); golang是cond.Wait()
+// 相同点：java的wait和notify必须在 synchronized 代码块中使用；golang的wait和signal必须在 mutex 中使用。二者都需要加锁。（golang的signal不需要在锁中调用也可以，不强制）
+// 不同点：java的wait和notify是 object 的方法；golang的wait和signal需要定义一个 sync.Cond 变量，传入一个 Mutex 锁来使用。即：java是object.wait(); golang是cond.Wait()
+//
+// note: cond作为函数参数时，必须是指针，否则失效！
 
-func ft(i int, l *sync.Mutex, c *sync.Cond) {
+func ft(i int, c *sync.Cond) {
 	fmt.Println("Not lock", i)
-	l.Lock()
+	c.L.Lock()
 
 	fmt.Println("Locked ", i)
 	fmt.Println("before wait ", i)
@@ -28,7 +30,7 @@ func ft(i int, l *sync.Mutex, c *sync.Cond) {
 
 	fmt.Println("after wait ", i)
 	fmt.Println("Unlock ", i)
-	l.Unlock()
+	c.L.Unlock()
 }
 
 func main() {
@@ -38,7 +40,7 @@ func main() {
 
 	// 定义3个协程，竞争抢锁。抢到了锁，率先进入wait等待。
 	for i := 0; i < 3; i++ {
-		go ft(i, l, c)
+		go ft(i, c)
 	}
 
 	// 循环3次，每次 signal “唤醒”一个协程。循环3次刚好逐个唤醒上面的所有协程
