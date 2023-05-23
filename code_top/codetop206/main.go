@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-// 链表反转 https://leetcode.cn/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-by-leetcode-solution-d1k2/
+// https://leetcode.cn/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-by-leetcode-solution-d1k2/
+// 链表反转
 /*
 关键点：
 1. 定义pre、curr

@@ -1,6 +1,6 @@
 package main
 
-// 快排
+// 快排。快速排序
 func quickSort(arr []int, low int, high int) {
 	if low < high {
 		middle := getMiddle(arr, low, high) //将list数组进行一分为二

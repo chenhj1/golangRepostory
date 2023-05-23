@@ -1,6 +1,7 @@
 package main
 
-// LRUCache https://leetcode.cn/problems/lru-cache/solution/lruhuan-cun-ji-zhi-by-leetcode-solution/
+// https://leetcode.cn/problems/lru-cache/solution/lruhuan-cun-ji-zhi-by-leetcode-solution/
+// LRUCache
 /*
 关键点：
 1. 双链表。优势：删除元素时，可以直接找到pre
