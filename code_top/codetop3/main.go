@@ -2,11 +2,12 @@ package main
 
 import "fmt"
 
-// https://leetcode.cn/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/
+// https://leetcode.cn/problems/longest-substring-without-repeating-characters/
+// 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+
 /* 要点：
 1.滑动窗口，用start、end标记窗口库边界。
 2.使用map标记窗口内元素是否重复
-3.
 
 */
 
